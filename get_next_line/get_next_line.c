@@ -6,11 +6,12 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:17:57 by aszamora          #+#    #+#             */
-/*   Updated: 2023/11/09 13:54:49 by aszamora         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:15:04 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 int	ft_find_nl(char *static_buff)
 {
@@ -108,3 +109,19 @@ char	*get_next_line(int fd)
 	static_buff = ft_static_buff(static_buff);
 	return (line);
 }
+
+/*int main(void)
+{
+	int		fd;
+	char	*line;
+
+	fd = open("texto_prueba.rtf", O_RDONLY);
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s\n", line);
+		free(line);
+	}
+	close(fd);
+	return (0);
+}
+*/
