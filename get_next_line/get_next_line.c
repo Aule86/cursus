@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:17:57 by aszamora          #+#    #+#             */
-/*   Updated: 2023/11/09 16:15:04 by aszamora         ###   ########.fr       */
+/*   Updated: 2023/11/23 13:55:33 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,25 +97,31 @@ char	*get_next_line(int fd)
 	while (ft_find_nl(static_buff) == -1)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
+		if (bytes == -1)
+		{
+			free(static_buff);
+			free (buffer);
+			return (NULL);
+		}
 		if (bytes <= 0)
 			break ;
 		buffer[bytes] = '\0';
 		static_buff = ft_strjoin(static_buff, buffer);
 	}
 	free(buffer);
-	if (bytes == -1)
+	if (bytes == -1 || !static_buff)
 		return (NULL);
 	line = ft_line(static_buff);
 	static_buff = ft_static_buff(static_buff);
 	return (line);
 }
 
-/*int main(void)
+/* int main(void)
 {
 	int		fd;
 	char	*line;
 
-	fd = open("texto_prueba.rtf", O_RDONLY);
+	fd = open("texto_prueba2.txt", O_RDONLY);
 	while ((line = get_next_line(fd)) != NULL)
 	{
 		printf("%s\n", line);
@@ -124,4 +130,4 @@ char	*get_next_line(int fd)
 	close(fd);
 	return (0);
 }
-*/
+ */
