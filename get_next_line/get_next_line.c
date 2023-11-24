@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asier <asier@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:17:57 by aszamora          #+#    #+#             */
-/*   Updated: 2023/11/23 13:55:33 by aszamora         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:26:58 by asier            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,7 @@ char	*get_next_line(int fd)
 	while (ft_find_nl(static_buff) == -1)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
-		if (bytes == -1)
-		{
-			free(static_buff);
-			free (buffer);
-			return (NULL);
-		}
+		read_error(&static_buff, &buffer, bytes);
 		if (bytes <= 0)
 			break ;
 		buffer[bytes] = '\0';
