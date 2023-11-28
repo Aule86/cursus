@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 12:17:57 by aszamora          #+#    #+#             */
-/*   Updated: 2023/11/27 12:34:29 by aszamora         ###   ########.fr       */
+/*   Created: 2023/11/27 12:47:04 by aszamora          #+#    #+#             */
+/*   Updated: 2023/11/28 11:24:01 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char	*ft_static_buff(char *static_buff)
 
 char	*get_next_line(int fd)
 {
-	static char	*static_buff;
+	static char	*static_buff[4096];
 	char		*buffer;
 	char		*line;
 	int			bytes;
@@ -92,35 +92,35 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buffer = malloc(BUFFER_SIZE +1);
 	bytes = 1;
-	while (ft_find_nl(static_buff) == -1 && buffer)
+	while (ft_find_nl(static_buff[fd]) == -1 && buffer)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
-		read_error(&static_buff, &buffer, bytes);
+		read_error(&static_buff[fd], &buffer, bytes);
 		if (bytes <= 0)
 			break ;
 		buffer[bytes] = '\0';
-		static_buff = ft_strjoin(static_buff, buffer);
+		static_buff[fd] = ft_strjoin(static_buff[fd], buffer);
 	}
 	free(buffer);
-	if (bytes == -1 || !static_buff)
+	if (bytes == -1 || !static_buff[fd])
 		return (NULL);
-	line = ft_line(static_buff);
-	static_buff = ft_static_buff(static_buff);
+	line = ft_line(static_buff[fd]);
+	static_buff[fd] = ft_static_buff(static_buff[fd]);
 	return (line);
 }
 
-/* int main(void)
+int main(int argc, char **argv)
 {
+	char	array[4096];
 	int		fd;
-	char	*line;
 
-	fd = open("texto_prueba2.txt", O_RDONLY);
-	while ((line = get_next_line(fd)) != NULL)
+
+	fd = open(4096, O_RDONLY);
+	while ((array[fd] = get_next_line(fd)) != NULL)
 	{
-		printf("%s\n", line);
-		free(line);
+		printf("%s\n", array[fd]);
+		free(array[fd]);
 	}
 	close(fd);
 	return (0);
 }
- */
