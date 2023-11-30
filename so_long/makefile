@@ -4,7 +4,9 @@ CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 
 INCLUDES	= -I ./includes
-SOURCE		= ./source/
+SOURCE		= ./source/*.c
+GETNEXTLINE	= get_next_line/*.c
+LIBFT		= libft/*.c
 LIBRARY 	= -Lminilibx -lmlx -framework OpenGL -framework AppKit
 MINILIBX	= mlx/
 

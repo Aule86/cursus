@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 11:58:53 by aszamora          #+#    #+#             */
-/*   Updated: 2023/11/30 12:00:37 by aszamora         ###   ########.fr       */
+/*   Created: 2023/11/30 11:59:11 by aszamora          #+#    #+#             */
+/*   Updated: 2023/11/30 13:20:53 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <string.h>
-# include <errno.h>
-# include <limits.h>
-# include "../includes/mlax.h"
+#include "includes/mlx.h"
+
+int	main(void)
+{
+	void	*mlx_connection;
+	void	*mlx_window;
+
+	mlx_connection = mlx_init();
+	mlx_window = mlx_new_window(mlx_connection, 500, 500, "My 1 window");
+	mlx_pixel_put(mlx_connection, mlx_window, 250, 250, 0x33FF36);
+	mlx_loop(mlx_connection);
+}
