@@ -6,12 +6,11 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 12:47:04 by aszamora          #+#    #+#             */
-/*   Updated: 2023/11/28 11:24:01 by aszamora         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:14:31 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 int	ft_find_nl(char *static_buff)
 {
@@ -109,18 +108,39 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	char	array[4096];
-	int		fd;
+	int		fd1;
+	int		fd2;
+	char	*line;
+	int		i;
 
-
-	fd = open(4096, O_RDONLY);
-	while ((array[fd] = get_next_line(fd)) != NULL)
+	if (argc < 3)
+		return (1);
+	fd1 = open(argv[1], O_RDONLY);
+	if (fd1 == -1)
+		return (1);
+	fd2 = open(argv[2], O_RDONLY);
+	if (fd2 == -1)
+		return (close(fd1), 1);
+	i = 1;
+	while (i < 10)
 	{
-		printf("%s\n", array[fd]);
-		free(array[fd]);
+		line = get_next_line(fd1);
+		if (line != NULL)
+		{
+			printf("Linea fichero 1 %d: %s", i, line);
+			free(line);
+		}
+		line = get_next_line(fd2);
+		if (line != NULL)
+		{
+			printf("Linea fichero 2 %d: %s", i, line);
+			free(line);
+		}
+		i++;
 	}
-	close(fd);
+	close(fd1);
+	close(fd2);
 	return (0);
 }
