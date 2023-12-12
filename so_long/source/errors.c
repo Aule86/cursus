@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 11:59:11 by aszamora          #+#    #+#             */
-/*   Updated: 2023/11/30 13:20:53 by aszamora         ###   ########.fr       */
+/*   Created: 2023/12/12 11:39:15 by aszamora          #+#    #+#             */
+/*   Updated: 2023/12/12 16:04:55 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/mlx.h"
+#include "so_long.h"
 
-int	main(void)
+static void	walls(t_map *game)
 {
-	void	*mlx_connection;
-	void	*mlx_window;
+	int	cols;
+	int	rows;
 
-	mlx_connection = mlx_init();
-	mlx_window = mlx_new_window(mlx_connection, 500, 500, "My 1 window");
-	mlx_pixel_put(mlx_connection, mlx_window, 250, 250, 0x33FF36);
-	mlx_loop(mlx_connection);
+	cols = verticalwall(game);
+	rows = horizontalwall(game);
+	if (!cols || !rows)
+	{
+		printf("\nThe map is missing walls\n");
+		//quit_game(game);
+	}
+}
+
+void	check_errors(t_map *game)
+{
+	walls(game);
 }
