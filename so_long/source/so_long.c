@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:01:33 by aszamora          #+#    #+#             */
-/*   Updated: 2023/12/12 16:05:08 by aszamora         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:33:30 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,25 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (dest);
 }
 
-/* int	quit_game(t_map *game)
+int	quit_game(t_map *game)
 {
-	
-} */
+	int	line;
+
+	line = 0;
+	if (game->winpointer)
+		mlx_destroy_window(game->mlx_pointer, game->winpointer);
+	free(game->mlx_pointer);
+	while (line < game->height -1)
+		free(game->map[line++]);
+	free(game->map);
+	exit(0);
+}
+
+void	check_errors(t_map *game)
+{
+	check_walls(game);
+	correct_player(game);
+}
 
 int	main(int argc, char **argv)
 {
