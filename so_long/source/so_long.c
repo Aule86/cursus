@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asier <asier@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:01:33 by aszamora          #+#    #+#             */
-/*   Updated: 2023/12/14 13:33:30 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:36:24 by asier            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,6 @@ int	main(int argc, char **argv)
 	game.mlx_connection = mlx_init();
 	game.mlx_window = mlx_new_window(game.mlx_connection, (game.width * 40),
 			(game.height * 40), "solong");
+	place_textures(&game);
+	add_graphics(&game);
 }

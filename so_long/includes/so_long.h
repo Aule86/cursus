@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asier <asier@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 11:58:53 by aszamora          #+#    #+#             */
-/*   Updated: 2023/12/14 13:41:33 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:25:09 by asier            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,14 @@ typedef struct s_map
 	int		height;
 	int		colums;
 	int		player;
-	int		enemies;
 	int		exit;
 	int		collectables;
+
+	void	*floor;
+	void	*wall;
+	void	*exit;
+	void	*collectable;
+	void	*player1;
 	void	*mlx_connection;
 	void	*mlx_window;
 	void	*winpointer;
