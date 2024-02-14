@@ -1,25 +1,34 @@
 NAME 	= so_long
 
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS = -Wall -Werror -Wextra -framework OpenGL -framework AppKit -g3
+LIBFT_DIR = libft/
+LIBFT = $(LIBFT_DIR)libft.a
 
-INCLUDES	= -I ./includes
-SOURCE		= source/*.c
-GETNEXTLINE	= get_next_line/*c
-LIBFT		= libft/*.c
-LIBRARY 	= -Lmlx -lmlx -framework OpenGL -framework AppKit
-MINILIBX	= mlx/
+MLX_DIR = minilibx/
+MLX = $(MLX_DIR)libmlx.a
 
+SRCS = so_long.c errors.c read_map.c graphics.c errors_content.c controls.c right_move.c flood_fill.c
+GETNEXTLINE = get_next_line/*.c
+PRINTF = printf/*.c
 
+HDRS = so_long.h
 
-all:
-	make -C $(MINILIBX)
-	$(CC) $(CFLAGS) $(SOURCE) $(GETNEXTLINE) $(INCLUDES) $(LIBRARY) -o $(NAME)
+all: $(NAME)
+
+$(NAME): $(LIBFT) $(MLX) $(SRCS) $(HDRS)
+	gcc $(CFLAGS) $(SRCS) $(LIBFT) $(GETNEXTLINE) $(PRINTF) $(MLX) -o $(NAME)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR) all clean
+
+$(MLX):
+	make -C $(MLX_DIR) all
 
 clean:
+	make -C $(LIBFT_DIR) fclean
+	make -C $(MLX_DIR) clean
 
 fclean: clean
-			make clean -C $(MINILIBX)
-			rm -rf $(NAME)
+	rm -f $(NAME)
 
 re: fclean all

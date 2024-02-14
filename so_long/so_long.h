@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asier <asier@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 11:58:53 by aszamora          #+#    #+#             */
-/*   Updated: 2024/01/10 13:25:09 by asier            ###   ########.fr       */
+/*   Updated: 2024/02/13 12:53:39 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,17 @@
 # include <string.h>
 # include <errno.h>
 # include <limits.h>
-# include "../mlx/mlx.h"
-# include "get_next_line.h"
+# include "minilibx/mlx.h"
+# include "get_next_line/get_next_line.h"
+# include "printf/ft_printf.h"
+# include "libft/libft.h"
+
+typedef struct s_pos
+{
+	int		x;
+	int		y;
+
+}			t_pos;
 
 typedef struct s_map
 {
@@ -29,35 +38,35 @@ typedef struct s_map
 	int		fd;
 	int		width;
 	int		height;
-	int		colums;
 	int		player;
 	int		exit;
 	int		collectables;
+	int		x_axis;
+	int		y_axis;
+	int		counter;
+	t_pos	playerpos;
 
 	void	*floor;
 	void	*wall;
-	void	*exit;
+	void	*goal;
 	void	*collectable;
 	void	*player1;
-	void	*mlx_connection;
-	void	*mlx_window;
 	void	*winpointer;
 	void	*mlx_pointer;
+	void	*pl_exit;
 
 }				t_map;
 
-int				main(int argc, char **argv);
-void			*ft_memset(void *b, int c, size_t len);
-int				quit_game(t_map *game);
-static void		check_walls(t_map *game);
-int				read_map(t_map *game, char **argv);
-static int		add_line(t_map *game, char *line);
-static int		map_width(char *str);
-void			check_errors(t_map *game);
-void			correct_player(t_map *game);
-static void		check_content(t_map *game, int height, int width);
-static void		check_walls(t_map *game);
-static int		verticalwall(t_map *game);
-static int		horizontalwall(t_map *game);
+int			quit_game(t_map *game);
+int			read_map(t_map *game, char **argv);
+void		check_errors(t_map *game);
+void		add_graphics(t_map *game);
+void		correct_player(t_map *game);
+void		place_textures(t_map *game);
+int			controls_working(int command, t_map *game);
+int			right_move(t_map *game, int i, int j);
+void		correct_player(t_map *game);
+void		place_graphics(t_map *game, int height, int width);
+void		flood_fill(t_map *map);
 
 #endif
