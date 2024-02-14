@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asier <asier@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:01:33 by aszamora          #+#    #+#             */
-/*   Updated: 2024/01/10 13:36:24 by asier            ###   ########.fr       */
+/*   Updated: 2024/02/13 13:02:04 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,26 @@ int	quit_game(t_map *game)
 	exit(0);
 }
 
-void	check_errors(t_map *game)
-{
-	check_walls(game);
-	correct_player(game);
-}
-
 int	main(int argc, char **argv)
 {
 	t_map	game;
 
 	if (argc != 2)
 		return (0);
+	if (!ft_strchr(argv[1], '.ber'))
+	{
+		ft_printf("The file is not .ber");
+		exit (0);
+	}
 	ft_memset(&game, 0, sizeof(t_map));
 	read_map(&game, argv);
 	check_errors(&game);
-	game.mlx_connection = mlx_init();
-	game.mlx_window = mlx_new_window(game.mlx_connection, (game.width * 40),
+	game.mlx_pointer = mlx_init();
+	game.winpointer = mlx_new_window(game.mlx_pointer, (game.width * 40),
 			(game.height * 40), "solong");
 	place_textures(&game);
 	add_graphics(&game);
+	mlx_key_hook(game.winpointer, controls_working, &game);
+	mlx_hook(game.winpointer, 17, 0, (void *)exit, 0);
+	mlx_loop(game.mlx_pointer);
 }

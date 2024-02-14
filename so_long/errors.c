@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:39:15 by aszamora          #+#    #+#             */
-/*   Updated: 2023/12/19 13:02:28 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:26:46 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static int	horizontalwall(t_map *game)
 	int	height;
 	int	width;
 
-	width = 0;
 	height = game->height;
-	while (width < game->height)
+	width = 0;
+	while (width < game->width)
 	{
-		if (!(game->map[width][0] == '1'
-			&& game->map[width][height -1] == '1'))
+		if (!(game->map[0][width] == '1'
+			&& game->map[height - 1][width] == '1'))
 			return (0);
 		width++;
 	}
@@ -58,46 +58,14 @@ static void	check_walls(t_map *game)
 	rows = horizontalwall(game);
 	if (!cols || !rows)
 	{
-		printf("\nThe map is missing walls\n");
+		ft_printf("\nThe map is missing walls\n");
 		quit_game(game);
 	}
 }
 
-/* verificar si el mapa tiene el contenido necesario */
-static void	check_content(t_map *game, int height, int width)
+void	check_errors(t_map *game)
 {
-	if (game->map[height][width] != '1' &&
-		game->map[height][width] != '0' &&
-		game->map[height][width] != 'P' &&
-		game->map[height][width] != 'E' &&
-		game->map[height][width] != 'C' &&
-		game->map[height][width] != '\n')
-	{
-		printf("\nError here!%c\n", game->map[height][width]);
-		quit_game(game);
-	}
-	if (game->map[height][width] == 'C')
-		game->colums++;
-	if (game->map[height][width] == 'P')
-		game->player++;
-	if (game->map[height][width] == 'E')
-		game->exit++;
-}
-
-void	correct_player(t_map *game)
-{
-	int	width;
-	int	height;
-
-	height = 0;
-	while (height <= game->height)
-	{
-		width = 0;
-		while (width <= game->width)
-		{
-			check_content(game, height, width);
-			width++;
-		}
-		height++;
-	}
+	check_walls(game);
+	correct_player(game);
+	flood_fill(game);
 }
