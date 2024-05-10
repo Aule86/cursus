@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/09 12:06:46 by aszamora          #+#    #+#             */
+/*   Updated: 2024/05/09 13:23:43 by aszamora         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 //ra, (rotate a) mueve arriba todos los elementos de A,
@@ -93,3 +105,4 @@ void	ft_ss(t_stack **a, t_stack **b, int j)
 	if (j == 0)
 		write(1, "ss\n", 3);
 }
+
