@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:07:13 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/20 16:50:22 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/20 17:24:42 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_stack
 {
-	long			nbr;
+	int				nbr;
 	long			index;
 	struct s_stack	*next;
 	struct s_stack	*prev;
@@ -73,6 +73,6 @@ void	ft_sb(t_stack **b, int j);
 t_stack	*ft_lstlast(t_stack *lst);
 int		ft_lstsize(t_stack *lst);
 int		ft_min(t_stack *a);
-int		t_max(t_stack *a);
+int		ft_max(t_stack *a);
 
 #endif

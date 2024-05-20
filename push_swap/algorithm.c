@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:05:38 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/20 13:49:26 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/20 17:27:17 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_atol(const char *str)
 	{
 		if (!ft_isdigit(*str))
 			ft_error();
-		i = i * 10 + (str - '0');
+		i = i * 10 + (*str - '0');
 		str++;
 	}
 	if ((sign * i) > 2147483647 || (sign * i) < -2147483648)
