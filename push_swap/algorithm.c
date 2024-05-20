@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:05:38 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/09 13:05:11 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/20 13:49:26 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_stack	*ft_process(int argc, char **argv)
 		while (i < argc)
 		{
 			j = ft_atol(argv[i]);
-			ft_add_back(&a, ft_stack_new(j));
+			ft_add_back(&a, ft_new_stack(j));
 			i++;
 		}
 	}
