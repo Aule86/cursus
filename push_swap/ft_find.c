@@ -6,12 +6,11 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:46:01 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/20 17:30:59 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:13:19 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 //Esta función chequea el index del numero en el stack.
 int	ft_find_index(t_stack *a, int nbr)

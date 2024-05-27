@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:06:50 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/09 12:09:21 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:13:06 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b, int j)
 	if (j == 0)
 		write(1, "pb\n", 3);
 }
-
 
 // rrb (reverse rotate b) : nueve todos los elemento de B para abajo shift 
 // el ultimo elemento se vuelve el primero

@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 10:57:00 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/20 16:57:46 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:35:12 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_sort_b_till_3(t_stack **stack_a, t_stack **stack_b)
 	while(ft_lstsize(*stack_a) > 3 && !ft_checksorted(*stack_a))
 	{
 		temp = *stack_a;
-		i = ft_rotate_ab(*stack_a, *stack_b);
+		i = ft_rotate_type_ab(*stack_a, *stack_b);
 		while (i >= 0)
 		{
 			if (i == ft_case_rarb(*stack_a, *stack_b, temp->nbr))
@@ -50,8 +50,8 @@ t_stack	*ft_sort_b(t_stack **stack_a)
 		ft_sort_b_till_3(stack_a, &stack_b);
 	if (!ft_checksorted(*stack_a))
 		ft_sort_three(stack_a);
+	return (stack_b);
 		
-	
 }
 t_stack	**ft_sort_a(t_stack **stack_a, t_stack **stack_b)
 {

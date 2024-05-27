@@ -23,24 +23,18 @@ SRC = 	algorithm.c \
 		push_swap.c \
 
 
-OBJ = ${SRC:.c=.o}
-
-
-.c.o:
-	${CC} -c $< -o ${<:.c=.o}
-
-${NAME}: ${OBJ}
-	make -C $(LIBFT_DIR)
-	${CC} ${FLAGS} ${OBJ} -o ${NAME}
+$(NAME):
+	$(CC) $(FLAGS) $(SRC) -Iincludes -o $(NAME)
 
 $(LIBFT):
-	make -C $(LIBFT) all clean
+	make -C $(LIBFT_DIR) all clean
 
-all: ${NAME}
+all: $(NAME)
 
 
 clean:
 	@rm -rf *.o
+	make -C $(LIBFT_DIR) fclean
 
 fclean: clean
 	@rm -rf ${NAME}
