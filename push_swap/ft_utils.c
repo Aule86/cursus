@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:27:34 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/20 16:33:19 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:22:27 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,11 @@ int	ft_max(t_stack *a)
 		a = a->next;
 	}
 	return (i);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }
