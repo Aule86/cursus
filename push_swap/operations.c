@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:06:46 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/27 15:11:31 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:04:24 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,19 @@ void	ft_ra(t_stack **a, int j)
 void	ft_sa(t_stack **a, int j)
 {
 	t_stack	*temp;
+	t_stack *temp2;
 
 	if ((!*a || !(*a)->next))
 		return ;
 	temp = *a;
 	*a = (*a)->next;
+	temp2 = (*a)->next;
 	(*a)->next = temp;
-	if (j > 0)
+	temp->next = temp2;
+	if (j == 0)
+	{
 		write(1, "sa\n", 3);
+	}
 }
 
 // pa, (push a) coge el primer elemento de B y lo pone
@@ -64,6 +69,7 @@ void	ft_pa(t_stack **a, t_stack **b, int j)
 // el ultimo elemento queda el primero
 void	ft_rra(t_stack **a, int j)
 {
+	printf("ROTO DE ROTAR\n");
 	t_stack	*temp;
 	int		i;
 

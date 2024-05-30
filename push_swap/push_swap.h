@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:07:13 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/27 15:43:45 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:20:38 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include "libft/libft.h"
+# include <stdio.h>
 
 typedef struct s_stack
 {
