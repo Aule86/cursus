@@ -37,12 +37,13 @@ SRCS	=	ft_memset.c \
 
 OBJS    = $(SRCS:.c=.o)
 
-
 LIBC	=	ar rcs
 CC		=	gcc
 RM      =	rm -f
 CFLAGS  =	-Wall -Wextra -Werror
 NAME    =	libft.a
+
+.SILENT:
 
 $(NAME): $(OBJS)
 	$(LIBC) $(NAME) $(OBJS)

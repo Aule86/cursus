@@ -21,13 +21,15 @@ SRC = 	algorithm.c \
 		operations2.c \
 		operations3.c \
 		push_swap.c \
+		ft_sort_3.c \
 
+.SILENT:
 
 $(NAME):
-	$(CC) $(FLAGS) $(SRC) -Iincludes -o $(NAME)
-
-$(LIBFT):
+	echo "Compilando..."
 	make -C $(LIBFT_DIR) all clean
+	$(CC) $(FLAGS) $(SRC) $(LIBFT) -Iincludes -o $(NAME)
+
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:46:01 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/27 15:13:19 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/30 13:26:20 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_find_index(t_stack *a, int nbr)
 
 	i = 0;
 	while (a->nbr != nbr)
-	{
+	{	
 		i++;
 		a = a->next;
 	}
