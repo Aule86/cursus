@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aule86 <aule86@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:06:50 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/27 15:13:06 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/31 11:49:42 by aule86           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	ft_rrb(t_stack **b, int j)
 	temp = *b;
 	while ((*b)->next)
 	{
-		*b = (*b)->next;
 		i++;
+		*b = (*b)->next;
 	}
 	(*b)->next = temp;
 	while (i > 1)

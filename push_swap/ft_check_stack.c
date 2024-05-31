@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aule86 <aule86@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:06:07 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/09 12:09:21 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/31 20:50:25 by aule86           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	ft_checksorted(t_stack *stack_a)
 	return (1);
 }
 
+//chequea si hay duplicados
 int	ft_checkdup(t_stack *a)
 {
 	t_stack	*tmp;

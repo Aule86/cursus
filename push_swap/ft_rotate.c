@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aule86 <aule86@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:07:57 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/10 12:38:21 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/31 21:39:14 by aule86           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int	ft_apply_rarb(t_stack **a, t_stack **b, int c, char s)
 	}
 	else
 	{
-		while ((*b)->nbr != c && ft_find_place_b(*a, c) > 0)
+		while ((*b)->nbr != c && ft_find_place_a(*a, c) > 0)
 			ft_rr(a, b, 0);
 		while ((*b)->nbr != c)
 			ft_rb(b, 0);
 		while (ft_find_place_a(*a, c) > 0)
 			ft_ra(a, 0);
-		ft_pb(a, b, 0);
+		ft_pa(a, b, 0);
 	}
 	return (-1);
 }
@@ -61,6 +61,7 @@ int	ft_apply_rrarrb(t_stack **a, t_stack **b, int c, char s)
 	}
 	return (-1);
 }
+
 int	ft_apply_rrarb(t_stack **a, t_stack **b, int c, char s)
 {
 	if (s == 'a')

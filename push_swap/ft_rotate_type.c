@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotate_type.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aule86 <aule86@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:31:42 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/10 13:32:10 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/31 21:22:04 by aule86           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_rotate_type_ba(t_stack *a, t_stack *b)
 	}
 	return (i);
 }
+
 int	ft_rotate_type_ab(t_stack *a, t_stack *b)
 {
 	int		i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aule86 <aule86@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:42:28 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/10 10:51:39 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/31 11:53:59 by aule86           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // el primer elemento se pasa a ser el ultimo.
 void	ft_rb(t_stack **b, int j)
 {
-    t_stack	*temp;
+	t_stack	*temp;
 
 	if ((!*b || !(*b)->next))
 		return ;
@@ -25,7 +25,7 @@ void	ft_rb(t_stack **b, int j)
 	(*b)->next = temp;
 	*b = temp->next;
 	temp->next = NULL;
-    if (j == 0)
+	if (j == 0)
 		write(1, "rb\n", 3);
 }
 
