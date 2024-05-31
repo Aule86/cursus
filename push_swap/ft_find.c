@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_find.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aule86 <aule86@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:46:01 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/30 13:26:20 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/31 12:03:23 by aule86           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_find_index(t_stack *a, int nbr)
 
 	i = 0;
 	while (a->nbr != nbr)
-	{	
+	{
 		i++;
 		a = a->next;
 	}
@@ -29,6 +29,7 @@ int	ft_find_index(t_stack *a, int nbr)
 //Esta función encuentra el lugar correcto del número en stack_b.
 // En otras palabras, comprueba qué número de índice obtendrá nbr_push
 // después de ser enviado a stack_b.
+
 int	ft_find_place_b(t_stack *stack_b, int nbr_push)
 {
 	int		i;
@@ -38,7 +39,7 @@ int	ft_find_place_b(t_stack *stack_b, int nbr_push)
 	if (nbr_push > stack_b->nbr && nbr_push < ft_lstlast(stack_b)->nbr)
 		i = 0;
 	else if (nbr_push > ft_max(stack_b) || nbr_push < ft_min(stack_b))
-		i = ft_find_index(stack_b, ft_min(stack_b));
+		i = ft_find_index(stack_b, ft_max(stack_b));
 	else
 	{
 		temp = stack_b->next;

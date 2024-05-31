@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aule86 <aule86@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:06:46 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/30 14:04:24 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/31 11:42:09 by aule86           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,13 @@ void	ft_ra(t_stack **a, int j)
 void	ft_sa(t_stack **a, int j)
 {
 	t_stack	*temp;
-	t_stack *temp2;
 
 	if ((!*a || !(*a)->next))
 		return ;
 	temp = *a;
 	*a = (*a)->next;
-	temp2 = (*a)->next;
+	temp->next = (*a)->next;
 	(*a)->next = temp;
-	temp->next = temp2;
 	if (j == 0)
 	{
 		write(1, "sa\n", 3);
@@ -60,7 +58,7 @@ void	ft_pa(t_stack **a, t_stack **b, int j)
 	temp = *a;
 	*a = *b;
 	*b = (*b)->next;
-	(*b)->next = temp;
+	(*a)->next = temp;
 	if (j == 0)
 		write(1, "pa\n", 3);
 }
@@ -69,7 +67,6 @@ void	ft_pa(t_stack **a, t_stack **b, int j)
 // el ultimo elemento queda el primero
 void	ft_rra(t_stack **a, int j)
 {
-	printf("ROTO DE ROTAR\n");
 	t_stack	*temp;
 	int		i;
 
