@@ -6,7 +6,7 @@
 /*   By: aule86 <aule86@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:46:01 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/31 12:03:23 by aule86           ###   ########.fr       */
+/*   Updated: 2024/05/31 22:29:18 by aule86           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_find_index(t_stack *a, int nbr)
 int	ft_find_place_b(t_stack *stack_b, int nbr_push)
 {
 	int		i;
-	t_stack	*temp;
+	t_stack	*tmp;
 
 	i = 1;
 	if (nbr_push > stack_b->nbr && nbr_push < ft_lstlast(stack_b)->nbr)
@@ -42,24 +42,24 @@ int	ft_find_place_b(t_stack *stack_b, int nbr_push)
 		i = ft_find_index(stack_b, ft_max(stack_b));
 	else
 	{
-		temp = stack_b->next;
-		while (stack_b->nbr > nbr_push || temp->nbr < nbr_push)
+		tmp = stack_b->next;
+		while (stack_b->nbr < nbr_push || tmp->nbr > nbr_push)
 		{
 			stack_b = stack_b->next;
-			temp = stack_b->next;
+			tmp = stack_b->next;
 			i++;
 		}
 	}
 	return (i);
 }
 //Esta función encuentra el lugar correcto del número en stack_a.
-// En otras palabras, comprueba qué número de índice obtendrá nbr_push
+// comprueba qué número de índice obtendrá nbr_push
 // después de ser enviado a stack_a.
 
 int	ft_find_place_a(t_stack *stack_a, int nbr_push)
 {
 	int		i;
-	t_stack	*temp;
+	t_stack	*tmp;
 
 	i = 1;
 	if (nbr_push < stack_a->nbr && nbr_push > ft_lstlast(stack_a)->nbr)
@@ -68,11 +68,11 @@ int	ft_find_place_a(t_stack *stack_a, int nbr_push)
 		i = ft_find_index(stack_a, ft_min(stack_a));
 	else
 	{
-		temp = stack_a->next;
-		while (stack_a->nbr > nbr_push || temp->nbr < nbr_push)
+		tmp = stack_a->next;
+		while (stack_a->nbr > nbr_push || tmp->nbr < nbr_push)
 		{
 			stack_a = stack_a->next;
-			temp = stack_a->next;
+			tmp = stack_a->next;
 			i++;
 		}
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cases.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aule86 <aule86@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:17:49 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/13 12:43:50 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/05/31 22:18:35 by aule86           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	ft_case_rarb(t_stack *a, t_stack *b, int c)
 		i = ft_find_index(a, c);
 	return (i);
 }
+
 int	ft_case_rrarrb(t_stack *a, t_stack *b, int c)
 {
 	int	i;
@@ -43,6 +44,7 @@ int	ft_case_rrarb(t_stack *a, t_stack *b, int c)
 	i = ft_find_place_b(b, c) + i;
 	return (i);
 }
+
 int	ft_case_rarrb(t_stack *a, t_stack *b, int c)
 {
 	int	i;
