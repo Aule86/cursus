@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:05:38 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/20 17:27:17 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/06/03 12:49:21 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_stack	*ft_sub_process(char **argv)
 
 	i = 0;
 	a = NULL;
-	tmp = ft_split(argv[1], 32);
+	tmp = ft_split(argv[1], ' ');
 	while (tmp[i])
 	{
 		j = ft_atol(tmp[i]);
@@ -70,8 +70,8 @@ t_stack	*ft_process(int argc, char **argv)
 
 	i = 1;
 	a = NULL;
-	if (argc < 2)
-		ft_error();//posiblemente mal, imprimir solo salto de linea
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (0);
 	if (argc == 2)
 		a = ft_sub_process(argv);
 	else
@@ -85,4 +85,3 @@ t_stack	*ft_process(int argc, char **argv)
 	}
 	return (a);
 }
-
