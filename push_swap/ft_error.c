@@ -6,14 +6,16 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:06:16 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/09 13:05:26 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/06/04 12:11:01 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error(void)
+void	ft_error(t_stack *lst)
 {
+	if (lst != NULL)
+		ft_free(&lst);
 	write(2, "Error\n", 6);
 	exit(1);
 }

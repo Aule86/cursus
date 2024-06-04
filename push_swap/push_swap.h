@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:07:13 by aszamora          #+#    #+#             */
-/*   Updated: 2024/05/30 11:20:38 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/06/04 12:14:27 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ typedef struct s_stack
 
 t_stack	*ft_process(int argc, char **argv);
 t_stack	*ft_sub_process(char **argv);
-int		ft_atol(const char *str);
+int		ft_atol(const char *str, t_stack *stack);
 void	ft_add_back(t_stack **stack, t_stack *new_stack);
 t_stack	*ft_new_stack(int content);
 void	ft_freestr(char **lst);
-void	ft_error(void);
+void	ft_error(t_stack *stack);
 void	ft_free(t_stack **lst);
 int		ft_case_rarb(t_stack *a, t_stack *b, int c);
 int		ft_case_rrarrb(t_stack *a, t_stack *b, int c);
