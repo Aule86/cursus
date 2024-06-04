@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aule86 <aule86@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:07:13 by aszamora          #+#    #+#             */
-/*   Updated: 2024/06/04 12:14:27 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/06/05 00:36:57 by aule86           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,9 @@ t_stack	*ft_lstlast(t_stack *lst);
 int		ft_lstsize(t_stack *lst);
 int		ft_min(t_stack *a);
 int		ft_max(t_stack *a);
+void	ft_checker_sub(t_stack **a, t_stack **b, char *line);
+char	*ft_check(t_stack **a, t_stack **b, char *line);
+void	ft_check_sub(t_stack **a, t_stack **b, char *line);
+void	ft_error_ch(void);
 
 #endif
