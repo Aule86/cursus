@@ -3,7 +3,6 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
-BONUS = checker
 
 SRC = 	algorithm.c \
 		ft_add_back.c \
@@ -24,7 +23,6 @@ SRC = 	algorithm.c \
 		push_swap.c \
 		ft_sort_3.c \
 
-BONUS_SRC = checker/checker.c \
 
 .SILENT:
 
@@ -33,14 +31,9 @@ $(NAME):
 	make -C $(LIBFT_DIR) all clean
 	$(CC) $(FLAGS) $(SRC) $(LIBFT) -Iincludes -o $(NAME)
 
-${BONUS}: ${BONUS_OBJ} 
-	make -C $(LIBFT_DIR) all clean
-	${CC} ${FLAGS} ${BONUS_SRC}  $(LIBFT) -Iincludes -o ${BONUS}
-
 
 all: $(NAME)
 
-bonus: ${BONUS} 
 
 clean:
 	@rm -rf *.o

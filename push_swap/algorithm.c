@@ -6,13 +6,13 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:05:38 by aszamora          #+#    #+#             */
-/*   Updated: 2024/06/04 12:14:12 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/06/06 11:04:10 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atol(const char *str, t_stack *stack)
+static int	ft_atol(const char *str, t_stack *stack, char **err_control)
 {
 	int				sign;
 	long long int	i;
@@ -32,12 +32,12 @@ int	ft_atol(const char *str, t_stack *stack)
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
-			ft_error(stack);
+			ft_error(stack, err_control);
 		i = i * 10 + (*str - '0');
 		str++;
 	}
 	if ((sign * i) > 2147483647 || (sign * i) < -2147483648)
-		ft_error(stack);
+		ft_error(stack, err_control);
 	return (sign * i);
 }
 
@@ -53,7 +53,7 @@ t_stack	*ft_sub_process(char **argv)
 	tmp = ft_split(argv[1], ' ');
 	while (tmp[i])
 	{
-		j = ft_atol(tmp[i], a);
+		j = ft_atol(tmp[i], a, tmp);
 		ft_add_back(&a, ft_new_stack(j));
 		i++;
 	}
@@ -78,8 +78,10 @@ t_stack	*ft_process(int argc, char **argv)
 	{
 		while (i < argc)
 		{
-			j = ft_atol(argv[i], a);
+			j = ft_atol(argv[i], a, NULL);
 			ft_add_back(&a, ft_new_stack(j));
+			if (argv[i][0] == '\0')
+				ft_error(a, NULL);
 			i++;
 		}
 	}

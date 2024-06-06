@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:06:31 by aszamora          #+#    #+#             */
-/*   Updated: 2024/06/04 12:15:08 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:33:47 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ t_stack	*ft_new_stack(int content)
 {
 	t_stack	*new;
 
-	new = malloc(sizeof (t_stack));
+	new = malloc(sizeof(t_stack));
 	if (!new)
-		ft_error(NULL);
+		ft_error(NULL, NULL);
 	new->nbr = content;
 	new->next = NULL;
 	return (new);
