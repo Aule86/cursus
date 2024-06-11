@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:05:38 by aszamora          #+#    #+#             */
-/*   Updated: 2024/06/06 11:04:10 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:31:13 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,10 @@ t_stack	*ft_process(int argc, char **argv)
 		{
 			j = ft_atol(argv[i], a, NULL);
 			ft_add_back(&a, ft_new_stack(j));
-			if (argv[i][0] == '\0')
+			if (argv[i][0] == '\0' || (argv[i][0] == '+' && argv[i][1] == '\0')
+				|| (argv[i][0] == '-' && argv[i][1] == '\0'))
+				ft_error(a, NULL);
+			else if (argv[i][0] == ' ')
 				ft_error(a, NULL);
 			i++;
 		}
