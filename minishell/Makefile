@@ -4,7 +4,13 @@ FLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
 
-SRC = minishell.c \
+SRC = 	minishell.c \
+		execute_command.c \
+		parse_command.c \
+		read_command.c \
+		init_shell.c \
+		env_command.c \
+
 
 
 .SILENT:

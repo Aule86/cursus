@@ -6,76 +6,67 @@
 /*   By: aule86 <aule86@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:24:27 by aule86            #+#    #+#             */
-/*   Updated: 2024/07/03 13:32:19 by aule86           ###   ########.fr       */
+/*   Updated: 2024/07/10 13:43:02 by aule86           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	execute_command(char **argv, char **envp)
+void	handle_signal(int signal)
 {
-	pid_t	pid;
-
-	pid = fork();
-	if (pid == 0)
-	{
-		if (execve(argv[0], argv, envp) == -1)
-			perror("execvp");
-		exit(EXIT_FAILURE);
-	}
-	else if (pid > 0)
-	{
-		waitpid(pid, NULL, 0);
-	}
-	else
-	{
-		perror("fork");
-	}
+	if (signal == SIGINT)
+		write(STDOUT_FILENO, "\nminishell> ", 12);
 }
 
-char	**parse_command(char *buffer)
+void	setup_shell(t_shell *shell, char **envp)
 {
-	int		argc;
-	char	**argv;
-	char	*token;
+	shell->envp = envp;
+	init_shell(shell, envp);
+	signal(SIGINT, handle_signal);
+}
 
-	argc = 0;
-	argv = (char **)malloc(BUFFER_SIZE * sizeof(char *));
-	if (!argv)
-		return (NULL);
-	token = strtok(buffer, " ");
-	while (token != NULL)
+void	cleanup_shell(t_shell *shell)
+{
+	int	i;
+
+	i = 0;
+	while (shell->env_copy[i] != NULL)
 	{
-		argv[argc++] = token;
-		token = strtok(NULL, " ");
+		free(shell->env_copy[i]);
+		i++;
 	}
-	argv[argc] = NULL;
-	return (argv);
+	free(shell->env_copy);
 }
 
-void	read_command(char *buffer)
+void	process_command(t_shell *shell)
 {
-	printf("minishell>");
-	if (fgets(buffer, BUFFER_SIZE, stdin) == NULL)
-		buffer[strcspn(buffer, "\n")] = '\0';
+	if (ft_strncmp(shell->buffer, "exit", 4) == 0
+		&& shell->buffer[4] == '\0')
+		exit(0);
+	shell->argv = parse_command(shell->buffer);
+	if (shell->argv[0] != NULL)
+	{
+		if (ft_strncmp(shell->argv[0], "env", 3) == 0
+			&& shell->argv[0][3] == '\0')
+			env_command(shell);
+		else
+			execute_command(shell);
+	}
+	free(shell->argv);
 }
 
-int	main(int ac, char **av, char **env)
+int	main(int argc, char **argv, char **envp)
 {
-	char	buffer[BUFFER_SIZE];
-	char	**argv;
+	t_shell	shell;
 
-	(void)ac;
-	(void)av;
+	(void)argc;
+	(void)argv;
+	setup_shell(&shell, envp);
 	while (1)
 	{
-		read_command(buffer);
-		if (strcmp(buffer, "exit") == 0)
-			break ;
-		argv = parse_command(buffer);
-		if (argv[0] != NULL)
-			execute_command(argv, env);
-		free(argv);
+		read_command(&shell);
+		process_command(&shell);
 	}
+	cleanup_shell(&shell);
 	return (0);
 }
