@@ -1,19 +1,25 @@
 NAME = philo
 
 
-SRCS = ft_atoi.c init_values.c philosophers.c routine.c time_utils.c \
-		main_checker.c ft_actions.c create_mtx_and_pth.c
-
-INCLUDE = philosophers.h \
-
 CC = gcc
 RM = rm -f
 AR = ar rcs
 CFLAGS = -Wall -Wextra -Werror
 #-g3 -fsanitize=thread
 
+SRCS = 	ft_atoi.c \
+		init_values.c \
+		philosophers.c \
+		routine.c \
+		time_utils.c \
+		main_checker.c \
+		ft_actions.c \
+		create_mtx_and_pth.c \
+
+INCLUDE = philosophers.h \
+
+
 %.o: %.c ${INCLUDE}
-			@echo "${BLUE} ◎ $(BROWN)Compiling   ${MAGENTA}→   $(CYAN)$< $(DEF_COLOR)"
 			@${CC} ${CFLAGS} -c $< -o $@
 
 OBJS = ${SRCS:.c=.o}
