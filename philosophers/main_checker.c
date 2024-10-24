@@ -6,10 +6,9 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 10:54:19 by aszamora          #+#    #+#             */
-/*   Updated: 2024/10/04 10:54:20 by aszamora         ###   ########.fr       */
+/*   Updated: 2024/10/14 12:15:10 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "philosophers.h"
 
@@ -47,15 +46,15 @@ void	ft_free(t_list *d)
 	int	i;
 
 	i = 0;
-	while (++i <= d->num_philos)
-		pthread_mutex_destroy(&d->mutex[i]);
+	while (i < d->num_philos)
+		pthread_mutex_destroy(&d->mutex[i++]);
 	i = 0;
 	if (d->num_philos == 1)
 		pthread_detach(d->thread[i]);
 	else
 	{
-		while (++i <= d->num_philos)
-			pthread_detach(d->thread[i]);
+		while (i < d->num_philos)
+			pthread_detach(d->thread[i++]);
 	}
 }
 
